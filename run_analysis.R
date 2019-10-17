@@ -60,4 +60,5 @@ names(consolidate)<-gsub("-mean()", "Mean", names(consolidate), ignore.case = TR
 ## average of each varible from subject and activity
 View(consolidate)
 consolidate <- group_by(consolidate,consolidate$subject,consolidate$Activity_type)
-summary(consolidate)
+summary_data <- summarise_all(consolidate,funs(mean))
+write.table(summary_data,"summary_data.txt",row.names = FALSE)
